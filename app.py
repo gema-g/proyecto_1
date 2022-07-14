@@ -12,7 +12,6 @@ from fpdf import FPDF #generar pdf
 
 date=datetime.now()
 
-
 app= Flask(__name__)
 app.secret_key="Develoteca" 
 
@@ -306,7 +305,6 @@ def download_report():
               textnumeme=str(row['num_emergencia'])
               textvigencia=str(row['vigencia'])
               i=i+26
-              #i=i+26
               if(i >= 190):
                   i=th-68
                   pdf.add_page()
@@ -508,8 +506,6 @@ def storageiv():
     return redirect('/ivehiculos')
 
 #imprimir PDF por registro
-
-
 
 #imprimir PDF
 @app.route('/downloadv/reportv/pdfv')
