@@ -334,7 +334,7 @@ def destroy(id):
 
     cursor.execute("DELETE FROM info_tecnicos WHERE id=%s", (id))
     conn.commit()
-    return redirect('/')
+    return redirect('http://20.114.233.203/')
 
 @app.route('/edit/<int:id>')
 def edit(id):
@@ -406,8 +406,9 @@ def update():
     cursor.execute(sql,datos)
     conn.commit()
 
-    return redirect('/')
-
+    return redirect('http://20.114.233.203/')
+    #return render_template('tecnicos/index.html',info_tecnicos=infot)
+    
 @app.route('/create')
 def create():
     return render_template('tecnicos/create.html')
@@ -454,7 +455,7 @@ def storage():
     conn.commit()
 
     #accedera directamente a index.html
-    return redirect('/')
+    return redirect('http://20.114.233.203/')
 
 #--------------------------- INFO_VEHICULOS ----------------------
 #la aplicación recibira solicitudes mediante la URL (host)
@@ -503,7 +504,7 @@ def storageiv():
     conn.commit()
     
     #return render_template('vehiculos/indexit.html')
-    return redirect('/ivehiculos')
+    return redirect('http://20.114.233.203/ivehiculos')
 
 #imprimir PDF por registro
 
@@ -595,8 +596,6 @@ def download_reportv():
           cursor.close()
           conn.commit()
 
-
-
 @app.route('/destroyiv/<int:id>')
 def destroyiv(id):
     conn= mysql.connect()
@@ -604,7 +603,7 @@ def destroyiv(id):
 
     cursor.execute("DELETE FROM info_vehiculos WHERE id=%s", (id))
     conn.commit()
-    return redirect('/ivehiculos')
+    return redirect('http://20.114.233.203/ivehiculos')
 
 @app.route('/editiv/<int:id>')
 def editiv(id):
@@ -649,7 +648,7 @@ def updateiv():
     cursor.execute(sql,datosiv)
     conn.commit()
     
-    return redirect('/ivehiculos')
+    return redirect('http://20.114.233.203/ivehiculos')
 
 
 #-----------------------INFO_DIMMES--------------------
@@ -705,7 +704,7 @@ def storageid():
     conn.commit()
     
     #return render_template('vehiculos/indexit.html')
-    return redirect('/idimmes')
+    return redirect('http://20.114.233.203/idimmes')
 
 #imprimir PDF por registro
 @app.route('/downloaddi/reportdi/pdfdi/<int:id>')
@@ -936,7 +935,7 @@ def destroyid(id):
 
     cursor.execute("DELETE FROM info_dimmes WHERE id=%s", (id))
     conn.commit()
-    return redirect('/idimmes')
+    return redirect('http://20.114.233.203/idimmes')
 
 @app.route('/editid/<int:id>')
 def editid(id):
@@ -987,7 +986,7 @@ def updateid():
     cursor.execute(sql,datosid)
     conn.commit()
     
-    return redirect('/idimmes') 
+    return redirect('http://20.114.233.203/idimmes') 
 
 #-----------------------HERRAMIENTAS_TECNICOS--------------------
 #la aplicación recibira solicitudes mediante la URL (host)
@@ -1055,7 +1054,7 @@ def storageht():
     conn.commit()
     
     #return render_template('vehiculos/indexit.html')
-    return redirect('/herramientast') 
+    return redirect('http://20.114.233.203/herramientast') 
 
 @app.route('/destroyht/<int:id>')
 def destroyht(id):
@@ -1064,7 +1063,7 @@ def destroyht(id):
 
     cursor.execute("DELETE FROM herramientas_tecnicos WHERE id=%s", (id))
     conn.commit()
-    return redirect('/herramientast')
+    return redirect('http://20.114.233.203/herramientast')
 
 @app.route('/editht/<int:id>')
 def editht(id):
@@ -1105,18 +1104,18 @@ def updateht():
     conn.commit()
 
     #return render_template('vehiculos/indexit.html')
-    return redirect('/herramientast')
+    return redirect('http://20.114.233.203/herramientast')
 
 @app.route('/datosh/<int:id>')
-def datosh(id):
-    conn= mysql.connect()
-    cursor= conn.cursor()
-    cursor.execute("SELECT * FROM herramientas_tecnicos WHERE id=%s", (id))
-    infoh=cursor.fetchall()   
-    conn.commit()
-    print(infoh)
+#def datosh(id):
+#    conn= mysql.connect()
+#    cursor= conn.cursor()
+#    cursor.execute("SELECT * FROM herramientas_tecnicos WHERE id=%s", (id))
+#    infoh=cursor.fetchall()   
+#    conn.commit()
+#    print(infoh)
     
-    return render_template('herramientas/datosh.html',herramientas_tecnicos=infoh)
+#    return render_template('herramientas/datosh.html',herramientas_tecnicos=infoh)
 
 def obtener_conexion():
     return pymysql.connect(host='localhost',user='root',password='',db='bdb1')
